@@ -10,12 +10,16 @@ class Account
     @balance += amount
   end
 
+  def withdraw(amount)
+    @balance -= amount
+  end
+
   def show_balance
     "£#{@balance}"
   end
 
 end
 
-acc = Account.new
-p acc.deposit(500)
-p acc.show_balance
+# acc = Account.new
+# p acc.deposit(500)
+# p acc.show_balance
