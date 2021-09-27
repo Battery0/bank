@@ -9,8 +9,12 @@ describe Account do
       account.deposit(500)
       expect(account.show_balance).to eq("£500")
     end
-  end
 
+    it 'raises error if deposit is not an Integer' do
+      expect{ account.deposit("1000") }.to raise_error("You are not entering a correct amount.")
+    end
+
+  end
 
   describe '#withdraw' do
     it 'withdrawing £250 from the account deducts £500 from the balance' do
