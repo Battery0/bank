@@ -7,7 +7,7 @@ class Account
   end
 
   def deposit(amount)
-    raise "You are not entering a correct monetary amount." if amount.class != Float
+    raise "You are not entering a correct monetary amount." if (amount.class != Integer) && (amount.class != Float)
 
     @balance += amount
   end
@@ -24,6 +24,6 @@ class Account
 
 end
 
-# acc = Account.new
-# p acc.deposit(500)
+acc = Account.new
+p acc.deposit(500.00)
 # p acc.show_balance
