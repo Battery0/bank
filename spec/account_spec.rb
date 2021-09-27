@@ -12,11 +12,15 @@ describe Account do
   end
 
 
-  describe 'withdraw' do
+  describe '#withdraw' do
     it 'withdrawing £250 from the account deducts £500 from the balance' do
       account.deposit(500)
       account.withdraw(500)
       expect(account.show_balance).to eq('£0')
+    end
+
+    it 'raises error if trying to withdraw more money than currently in balance' do
+      expect{ account.withdraw(1) }.to raise_error("Your balance does not currently have that much money.")
     end
   end
 
