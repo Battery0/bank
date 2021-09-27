@@ -11,7 +11,11 @@ class Account
   end
 
   def show_balance
-    @balance
+    "£#{@balance}"
   end
 
 end
+
+acc = Account.new
+p acc.deposit(500)
+p acc.show_balance
