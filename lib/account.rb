@@ -22,10 +22,6 @@ class Account
     debit_transaction(amount)
   end
 
-  def balance
-    '£%.2f' % @balance
-  end
-
   def transaction_history
     @transaction_records
   end
