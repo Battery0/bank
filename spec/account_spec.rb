@@ -13,7 +13,6 @@ describe Account do
     it 'raises error if deposit is not a Float or Integer' do
       expect{ account.deposit("1000") }.to raise_error("You are not entering a correct monetary amount.")
     end
-
   end
 
   describe '#withdraw' do
@@ -24,7 +23,7 @@ describe Account do
     end
 
     it 'raises error if trying to withdraw more money than currently available in the balance' do
-      expect{ account.withdraw(1) }.to raise_error("Your balance does not currently have that much money.")
+      expect{ account.withdraw(1) }.to raise_error("Your account does not currently have that much money.")
     end
   end
 
