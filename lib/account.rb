@@ -13,6 +13,7 @@ class Account
 
     @balance += amount
     credit_transaction(amount)
+    balance
   end
 
   def debit(amount)
@@ -20,6 +21,7 @@ class Account
 
     @balance -= amount
     debit_transaction(amount)
+    balance
   end
 
   def transaction_history
@@ -29,11 +31,11 @@ class Account
   private
 
   def credit_transaction(credit_amount)
-    @transaction_records << [date_of_transaction, ('£%.2f' % credit_amount), "", balance]
+    @transaction_records << [date_of_transaction, '£%.2f' % credit_amount, "", balance]
   end
 
   def debit_transaction(debit_amount)
-    @transaction_records << [date_of_transaction, "", ('£%.2f' % debit_amount), balance]
+    @transaction_records << [date_of_transaction, "", '£%.2f' % debit_amount, balance]
   end
 
   def balance
