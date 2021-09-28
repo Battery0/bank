@@ -92,10 +92,8 @@
           3,
           null,
           null,
-          null,
           1,
           1,
-          null,
           null,
           null,
           1,
@@ -116,20 +114,11 @@
           7,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       },
       "/Users/ian/Documents/Projects/weekly_challenges/week_10_bank/bank/lib/print_bank_statement.rb": {
         "lines": [
-          null,
-          null,
           1,
           null,
           1,
@@ -140,10 +129,6 @@
           1,
           1,
           2,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -168,15 +153,10 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       }
     },
-    "timestamp": 1632847472
+    "timestamp": 1632847870
   }
 }

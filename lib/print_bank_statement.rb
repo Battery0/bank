@@ -12,7 +12,3 @@ class PrintBankStatement
   end
 
 end
-
-
-# pbs = PrintBankStatement.new
-# pbs.print_statement([["#{Time.now.strftime("%d/%m/%Y")}", "£500.00", "", "£500.00"]])

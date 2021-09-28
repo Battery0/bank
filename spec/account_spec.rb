@@ -8,7 +8,7 @@ describe Account do
   let(:credit_balance) { ('£%.2f' % 500) }
   let(:debit) { ('£%.2f' % 65) }
   let(:debit_balance) { ('£%.2f' % 435) }
-  let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" } ) }
+  let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" }) }
 
   describe '#credit' do
 
