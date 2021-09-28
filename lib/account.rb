@@ -19,6 +19,7 @@ class Account
     raise "Your account does not currently have that much money." if @balance < amount
 
     @balance -= amount
+    debit_transaction(amount)
   end
 
   def balance
@@ -30,11 +31,19 @@ class Account
   end
 
 
+
+
+
   private
 
   def credit_transaction(credit_amount)
-    @transaction_records << [date, ('£%.2f' % credit_amount), " ", balance]
+    @transaction_records << [date, ('£%.2f' % credit_amount), "", balance]
   end
+
+  def debit_transaction(debit_amount)
+    @transaction_records << [date, "", ('£%.2f' % debit_amount), balance]
+  end
+
 
   def date
     Time.now.strftime("%d/%m/%Y")

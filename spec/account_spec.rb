@@ -5,7 +5,10 @@ describe Account do
   let(:account) { described_class.new }
   let(:date) { Time.now.strftime("%d/%m/%Y") }
   let(:deposit) { ('£%.2f' % 500) }
-  let(:balance) { ('£%.2f' % 500) }
+  let(:deposit_balance) { ('£%.2f' % 500) }
+  let(:withdraw) { ('£%.2f' % 65) }
+  let(:withdraw_balance) { ('£%.2f' % 435) }
+
 
   describe '#deposit' do
     it 'adds £500 to the account balance when depositing £500' do
@@ -19,7 +22,7 @@ describe Account do
 
     it 'updates the account history with a credit transaction' do
       account.deposit(500)
-      expect(account.transaction_history).to include([date, deposit, " ", balance])
+      expect(account.transaction_history).to include([date, deposit, "", deposit_balance])
     end
 
   end
@@ -37,6 +40,15 @@ describe Account do
     it 'raises error if trying to withdraw more money than currently available in the balance' do
       expect{ account.withdraw(1) }.to raise_error("Your account does not currently have that much money.")
     end
+
+    it 'updates the account history with a debit transaction' do
+      account.deposit(500)
+      account.withdraw(65)
+      expect(account.transaction_history).to include([date, "", withdraw, withdraw_balance])
+    end
+
+
+
   end
 
 
