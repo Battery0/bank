@@ -4,6 +4,7 @@ class Account
 
   def initialize
     @balance = START_BALANCE
+    @transaction_records = []
   end
 
   def deposit(amount)
@@ -11,7 +12,7 @@ class Account
     (amount.class != Float)
 
     @balance += amount
-
+    credit_transaction(amount)
   end
 
   def withdraw(amount)
@@ -20,8 +21,28 @@ class Account
     @balance -= amount
   end
 
-  def show_balance
-    "£#{'%.2f' % @balance}"
+  def balance
+    '£%.2f' % @balance
+  end
+
+  def transaction_history
+    @transaction_records
+  end
+
+
+  private
+
+  def credit_transaction(credit_amount)
+    @transaction_records << [date, ('£%.2f' % credit_amount), " ", balance]
+  end
+
+  def date
+    Time.now.strftime("%d/%m/%Y")
   end
 
 end
+
+
+# acc = Account.new
+# acc.deposit(500)
+# p acc.transaction_history
