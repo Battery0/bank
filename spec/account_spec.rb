@@ -3,53 +3,38 @@ require 'account'
 describe Account do
 
   let(:account) { described_class.new }
-  let(:date) { Time.now.strftime("%d/%m/%Y") }
-  let(:deposit) { ('£%.2f' % 500) }
-  let(:deposit_balance) { ('£%.2f' % 500) }
-  let(:withdraw) { ('£%.2f' % 65) }
-  let(:withdraw_balance) { ('£%.2f' % 435) }
+  let(:date_of_transaction) { Time.now.strftime("%d/%m/%Y") }
+  let(:credit) { ('£%.2f' % 500) }
+  let(:credit_balance) { ('£%.2f' % 500) }
+  let(:debit) { ('£%.2f' % 65) }
+  let(:debit_balance) { ('£%.2f' % 435) }
 
 
-  describe '#deposit' do
-    # it 'adds £500 to the account balance when depositing £500' do
-    #   account.deposit(500)
-    #   expect(account.balance).to eq("£500.00")
-    # end
+  describe '#credit' do
 
-    it 'raises error if deposit is not a Float or Integer' do
-      expect{ account.deposit("1000") }.to raise_error("You are not entering a correct monetary amount.")
+    it 'raises error if credit is not a Float or Integer' do
+      expect{ account.credit("1000") }.to raise_error("You are not entering a correct monetary amount.")
     end
 
     it 'updates the account history with a credit transaction' do
-      account.deposit(500)
-      expect(account.transaction_history).to include([date, deposit, "", deposit_balance])
+      account.credit(500)
+      expect(account.transaction_history).to include([date_of_transaction, credit, "", credit_balance])
     end
 
   end
 
+  describe '#debit' do
 
-
-
-  describe '#withdraw' do
-    # it 'withdrawing £100.50 from the account deducts £100.50 from the total balance' do
-    #   account.deposit(500)
-    #   account.withdraw(100.50)
-    #   expect(account.balance).to eq('£399.50')
-    # end
-
-    it 'raises error if trying to withdraw more money than currently available in the balance' do
-      expect{ account.withdraw(1) }.to raise_error("Your account does not currently have that much money.")
+    it 'raises error if trying to debit more money than currently available in the balance' do
+      expect{ account.debit(1) }.to raise_error("Your account does not currently have that much money.")
     end
 
     it 'updates the account history with a debit transaction' do
-      account.deposit(500)
-      account.withdraw(65)
-      expect(account.transaction_history).to include([date, "", withdraw, withdraw_balance])
+      account.credit(500)
+      account.debit(65)
+      expect(account.transaction_history).to include([date_of_transaction, "", debit, debit_balance])
     end
 
-
-
   end
-
 
 end
