@@ -1,19 +1,18 @@
-require_relative './account'
-
 class PrintBankStatement
 
   def initialize
-    @statement_headers = "date || credit || debit || balance"
+    @statement_headers = ["date", "credit", "debit", "balance"]
   end
 
   def print_statement(account_transactions)
-    @statement_headers
-    # account.transaction_history
+    statement = account_transactions.unshift(@statement_headers)
+    statement.each do |element|
+      puts element.join(" || ")
+    end   
   end
 
 end
 
 
 # pbs = PrintBankStatement.new
-# p pbs.print_statement
-
+# pbs.print_statement([["#{Time.now.strftime("%d/%m/%Y")}", "£500.00", "", "£500.00"]])

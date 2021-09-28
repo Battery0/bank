@@ -31,17 +31,11 @@ class Account
   end
 
 
-
-
   def account_statement(statement = PrintBankStatement.new)
     statement.print_statement(transaction_history)
   end
   
 
-
-
-
-  
   private
 
   def credit_transaction(credit_amount)
@@ -61,3 +55,10 @@ class Account
   end
 
 end
+
+
+# acc = Account.new
+#  acc.credit(50)
+#  acc.credit(25)
+#  acc.transaction_history
+# p acc.account_statement
