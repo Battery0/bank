@@ -36,7 +36,7 @@ describe Account do
       expect(account.transaction_history).to include([date_of_transaction, "", debit, debit_balance])
     end
 
-    it 'shows the correct account balance after depositing money into the account' do
+    it 'shows the correct account balance after withdrawing money frrom the account' do
       account.credit(500)
       expect(account.debit(65)).to eq(debit_balance)
     end
