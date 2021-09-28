@@ -1,49 +1,63 @@
-# class Account
+require_relative './print_bank_statement'
 
-#   START_BALANCE = 0
+class Account
 
-#   def initialize
-#     @balance = START_BALANCE
-#     @transaction_records = []
-#   end
+  START_BALANCE = 0
 
-#   def credit(amount)
-#     raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
-#     (amount.class != Float)
+  def initialize
+    @balance = START_BALANCE
+    @transaction_records = []
+  end
 
-#     @balance += amount
-#     credit_transaction(amount)
-#     balance
-#   end
+  def credit(amount)
+    raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
+    (amount.class != Float)
 
-#   def debit(amount)
-#     raise "Your account does not currently have that much money." if @balance < amount
+    @balance += amount
+    credit_transaction(amount)
+    balance
+  end
 
-#     @balance -= amount
-#     debit_transaction(amount)
-#     balance
-#   end
+  def debit(amount)
+    raise "Your account does not currently have that much money." if @balance < amount
 
-#   def transaction_history
-#     @transaction_records
-#   end
+    @balance -= amount
+    debit_transaction(amount)
+    balance
+  end
+
+  def transaction_history
+    @transaction_records
+  end
+
+
+
+
+  def account_statement(statement = PrintBankStatement.new)
+    statement.print_statement(transaction_history)
+  end
   
-#   private
 
-#   def credit_transaction(credit_amount)
-#     @transaction_records << [date_of_transaction, '£%.2f' % credit_amount, "", balance]
-#   end
 
-#   def debit_transaction(debit_amount)
-#     @transaction_records << [date_of_transaction, "", '£%.2f' % debit_amount, balance]
-#   end
 
-#   def balance
-#     '£%.2f' % @balance
-#   end
 
-#   def date_of_transaction
-#     Time.now.strftime("%d/%m/%Y")
-#   end
+  
+  private
 
-# end
+  def credit_transaction(credit_amount)
+    @transaction_records << [date_of_transaction, '£%.2f' % credit_amount, "", balance]
+  end
+
+  def debit_transaction(debit_amount)
+    @transaction_records << [date_of_transaction, "", '£%.2f' % debit_amount, balance]
+  end
+
+  def balance
+    '£%.2f' % @balance
+  end
+
+  def date_of_transaction
+    Time.now.strftime("%d/%m/%Y")
+  end
+
+end
