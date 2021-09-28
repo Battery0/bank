@@ -44,6 +44,9 @@ class Account
     @transaction_records << [date, "", ('£%.2f' % debit_amount), balance]
   end
 
+  def balance
+    '£%.2f' % @balance
+  end
 
   def date
     Time.now.strftime("%d/%m/%Y")
