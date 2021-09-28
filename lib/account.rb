@@ -11,6 +11,7 @@ class Account
     (amount.class != Float)
 
     @balance += amount
+
   end
 
   def withdraw(amount)
