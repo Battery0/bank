@@ -4,10 +4,10 @@ describe Account do
 
   let(:account) { described_class.new }
   let(:date_of_transaction) { Time.now.strftime("%d/%m/%Y") }
-  let(:credit) { ('£%.2f' % 500) }
-  let(:credit_balance) { ('£%.2f' % 500) }
-  let(:debit) { ('£%.2f' % 65) }
-  let(:debit_balance) { ('£%.2f' % 435) }
+  let(:credit) { "£500.00" }
+  let(:balance_credit) { "£500.00" }
+  let(:debit) { "£65.00" }
+  let(:balance_debit) { "£435.00" }
   let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" }) }
 
   describe '#credit' do
@@ -17,11 +17,11 @@ describe Account do
 
     it 'updates the account history with a credit transaction' do
       account.credit(500)
-      expect(account.transaction_history).to include([date_of_transaction, credit, "", credit_balance])
+      expect(account.transaction_history).to include([date_of_transaction, credit, "", balance_credit])
     end
 
     it 'shows the correct account balance after depositing money into the account' do
-      expect(account.credit(500)).to eq(credit_balance)
+      expect(account.credit(500)).to eq(balance_credit)
     end
   end
 
@@ -33,12 +33,12 @@ describe Account do
     it 'updates the account history with a debit transaction' do
       account.credit(500)
       account.debit(65)
-      expect(account.transaction_history).to include([date_of_transaction, "", debit, debit_balance])
+      expect(account.transaction_history).to include([date_of_transaction, "", debit, balance_debit])
     end
 
     it 'shows the correct account balance after withdrawing money from the account' do
       account.credit(500)
-      expect(account.debit(65)).to eq(debit_balance)
+      expect(account.debit(65)).to eq(balance_debit)
     end
   end
 
