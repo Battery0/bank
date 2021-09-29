@@ -7,6 +7,17 @@ class Transaction
 
 
 
+  def debit(debit_amount, balance)
+    [date, "", money_format(debit_amount), balance]
+  end
+
+
+
+
+
+
+
+
   private
 
   def date #for extraction - Transaction class
