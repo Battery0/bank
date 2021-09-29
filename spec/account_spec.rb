@@ -11,7 +11,6 @@ describe Account do
   let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" }) }
 
   describe '#credit' do
-
     it 'raises error if credit is not a Float or Integer' do
       expect { account.credit("1000") }.to raise_error("You are not entering a correct monetary amount.")
     end
