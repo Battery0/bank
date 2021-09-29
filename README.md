@@ -1,6 +1,6 @@
 # Bank Challenge
 
-Bank app that allows you to add deposits & withdrawls to your account that is tracked.<br>
+Bank app that allows you to add deposits & withdrawals to your account that is tracked.<br>
 Allows you to print your stored transactional history.
 
 ## Note to Coaches - Submission 1
