@@ -37,19 +37,23 @@ class Account
   private
 
   def credit_transaction(credit_amount)
-    @transaction_records << [date_of_transaction, '£%.2f' % credit_amount, "", balance]
+    @transaction_records << [date_of_transaction, money_format(credit_amount), "", balance]
   end
 
   def debit_transaction(debit_amount)
-    @transaction_records << [date_of_transaction, "", '£%.2f' % debit_amount, balance]
+    @transaction_records << [date_of_transaction, "", money_format(debit_amount), balance]
   end
 
   def balance
-    '£%.2f' % @balance
+    money_format(@balance)
   end
 
   def date_of_transaction
     Time.now.strftime("%d/%m/%Y")
+  end
+
+  def money_format(money)
+    '£%.2f' % money
   end
 
 end
