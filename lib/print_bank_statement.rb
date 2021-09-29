@@ -8,7 +8,6 @@ class PrintBankStatement
     statement = account_transactions.unshift(@statement_headers)
     statement.each do |element|
       puts element.join(" || ")
-      # puts element
     end   
   end
 
