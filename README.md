@@ -61,4 +61,3 @@ To run the suite of tests, please run:
 To run rubocop, please run:
 
 `rubocop`
-
