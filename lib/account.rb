@@ -6,7 +6,7 @@ class Account
 
   def initialize
     @balance = START_BALANCE
-    @transaction_records = [] #for extraction - Transaction class
+    @transaction_records = [] #I think this stays in account.
   end
 
   def credit(amount)
@@ -36,11 +36,11 @@ class Account
   
   private
 
-  def credit_transaction(credit_amount) #for extraction - Transaction class
+  def credit_transaction(credit_amount) #done
     @transaction_records << [date_of_transaction, money_format(credit_amount), "", balance]
   end
 
-  def debit_transaction(debit_amount) #for extraction - Transaction class
+  def debit_transaction(debit_amount) #done
     @transaction_records << [date_of_transaction, "", money_format(debit_amount), balance]
   end
 
@@ -48,11 +48,11 @@ class Account
     money_format(@balance)
   end
 
-  def date_of_transaction #for extraction - Transaction class
+  def date_of_transaction #done
     Time.now.strftime("%d/%m/%Y")
   end
 
-  def money_format(money) #MIGHT extract - Transaction class
+  def money_format(money) #done
     '£%.2f' % money
   end
 
