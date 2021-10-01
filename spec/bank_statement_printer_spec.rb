@@ -5,7 +5,7 @@ describe BankStatementPrinter do
   let(:print_bank_statement) { described_class.new }
   let(:statement_header) { "date || credit || debit || balance" }
   let(:date) { Time.now.strftime("%d/%m/%Y") }
-  let(:transaction_dbl) { double("transaction double", { record: { date: date, credit: "£500.00", debit: "", current_balance: "£500.00" } }) }
+  let(:transaction_dbl) { double("transaction double", { record: { date: date, credit: "£500.00", debit: "", balance: "£500.00" } }) }
   let(:transaction_history) { [transaction_dbl] }
   let(:formatted_statement) { "#{date} || £500.00 ||  || £500.00" }
 

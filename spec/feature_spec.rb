@@ -29,7 +29,7 @@ describe 'feature test' do
     account.debit(56.73)
     account.credit(800)
     account.debit(27.99)
-    expect{ account.account_statement }.to output(expected_statement).to_stdout
+    expect { account.account_statement }.to output(expected_statement).to_stdout
   end
 
 end

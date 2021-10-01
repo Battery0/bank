@@ -4,12 +4,12 @@ class Transaction
     @transaction_record = {}
   end
 
-  def credit(credit_amount, balance)
-    @transaction_record = { date: date, credit: money_format(credit_amount), debit: "", current_balance: balance }
+  def credit(amount, balance)
+    @transaction_record = { date: date, credit: money_format(amount), debit: "", balance: balance }
   end
 
-  def debit(debit_amount, balance)
-    @transaction_record = { date: date, credit: "", debit: money_format(debit_amount), current_balance: balance }
+  def debit(amount, balance)
+    @transaction_record = { date: date, credit: "", debit: money_format(amount), balance: balance }
   end
 
   def record

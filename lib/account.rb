@@ -48,10 +48,3 @@ class Account
   end
 
 end
-
-acc = Account.new
-acc.credit(500)
-acc.credit(700)
-acc.credit(250)
-acc.debit(100)
-acc.account_statement

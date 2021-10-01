@@ -10,9 +10,8 @@ describe Account do
   let(:balance_debit) { "£435.00" }
   let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" }) }
   let(:formatted_statement) { "#{date} || £500.00 ||  || £500.00" }
-  let(:credit_transaction_dbl) { double("transaction double", { credit: { date: date, credit: credit, debit: "", current_balance: balance_credit } }) }
-  let(:debit_transaction_dbl) { double("transaction double", { debit: { date: date, credit: "", debit: debit, current_balance: balance_debit } }) }
-
+  let(:credit_transaction_dbl) { double("transaction double", { credit: { date: date, credit: credit, debit: "", balance: balance_credit } }) }
+  let(:debit_transaction_dbl) { double("transaction double", { debit: { date: date, credit: "", debit: debit, balance: balance_debit } }) }
 
   describe '#credit' do
     it 'raises error if credit is not a Float or Integer' do
@@ -46,13 +45,6 @@ describe Account do
       expect(account.debit(65)).to eq(balance_debit)
     end
   end
-
-
-
-
-
-
-
 
   describe '#account_statement' do
     it 'outputs the account transaction history statement' do
