@@ -1,4 +1,4 @@
-require_relative './print_bank_statement'
+require_relative './bank_statement_printer'
 require_relative './transaction'
 
 class Account
@@ -37,7 +37,7 @@ class Account
 
 
 
-  def account_statement(statement = PrintBankStatement.new)
+  def account_statement(statement = BankStatementPrinter.new)
     statement.print_statement(transaction_history)
   end
 

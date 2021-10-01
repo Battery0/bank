@@ -1,4 +1,4 @@
-class PrintBankStatement
+class BankStatementPrinter
 
   def initialize
     @statement_headers = "date || credit || debit || balance"
