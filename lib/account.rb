@@ -10,10 +10,6 @@ class Account
     @transaction_records = []
   end
 
-
-
-  
-
   def credit(amount, transaction = Transaction.new)
     raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
     (amount.class != Float)
@@ -24,7 +20,6 @@ class Account
     balance
   end
 
-
   def debit(amount, transaction = Transaction.new)
     raise "Your account does not currently have that much money." if @balance < amount
 
@@ -34,17 +29,10 @@ class Account
     balance
   end
 
-
-
-
   def account_statement(statement = BankStatementPrinter.new)
     statement.print_statement(transaction_history)
   end
 
-
-
-
-  
   private
 
   def store_record(transaction)
