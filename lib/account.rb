@@ -1,4 +1,5 @@
 require_relative './print_bank_statement'
+require_relative './transaction'
 
 class Account
 
@@ -6,54 +7,63 @@ class Account
 
   def initialize
     @balance = START_BALANCE
-    @transaction_records = [] #I think this stays in account.
+    @transaction_records = []
   end
 
-  def credit(amount)
+
+
+  
+
+  def credit(amount, transaction = Transaction.new)
     raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
     (amount.class != Float)
 
     @balance += amount
-    credit_transaction(amount)
+    transaction.credit(amount, balance)
+    store_record(transaction)
     balance
   end
 
-  def debit(amount)
+
+  def debit(amount, transaction = Transaction.new)
     raise "Your account does not currently have that much money." if @balance < amount
 
     @balance -= amount
-    debit_transaction(amount)
+    transaction.debit(amount, balance)
+    store_record(transaction)
     balance
   end
 
-  def transaction_history #for extraction - Transaction class
-    @transaction_records
-  end
 
-  def account_statement(statement = PrintBankStatement.new) #for extraction - Transaction class
+
+
+  def account_statement(statement = PrintBankStatement.new)
     statement.print_statement(transaction_history)
   end
+
+
+
+
   
   private
 
-  def credit_transaction(credit_amount) #done
-    @transaction_records << [date_of_transaction, money_format(credit_amount), "", balance]
+  def store_record(transaction)
+    @transaction_records << transaction
   end
 
-  def debit_transaction(debit_amount) #done
-    @transaction_records << [date_of_transaction, "", money_format(debit_amount), balance]
+  def transaction_history
+    @transaction_records
   end
 
   def balance
-    money_format(@balance)
-  end
-
-  def date_of_transaction #done
-    Time.now.strftime("%d/%m/%Y")
-  end
-
-  def money_format(money) #done
-    '£%.2f' % money
+    '£%.2f' % @balance
   end
 
 end
+
+acc = Account.new
+acc.credit(500)
+acc.credit(700)
+acc.credit(250)
+acc.debit(100)
+acc.account_statement

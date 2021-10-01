@@ -9,6 +9,7 @@ describe Account do
   let(:debit) { "£65.00" }
   let(:balance_debit) { "£435.00" }
   let(:print_bank_statement_dbl) { double("print statement double", { print_statement: "date || credit || debit || balance" }) }
+  let(:transaction_dbl) { double("transaction double") }
 
   describe '#credit' do
     it 'raises error if credit is not a Float or Integer' do
@@ -17,7 +18,8 @@ describe Account do
 
     it 'updates the account history with a credit transaction' do
       account.credit(500)
-      expect(account.transaction_history).to include([date_of_transaction, credit, "", balance_credit])
+      expect(account.account_statement).to
+      # expect(account.transaction_history).to include(transaction_dbl)
     end
 
     it 'shows the correct account balance after depositing money into the account' do
@@ -33,7 +35,7 @@ describe Account do
     it 'updates the account history with a debit transaction' do
       account.credit(500)
       account.debit(65)
-      expect(account.transaction_history).to include([date_of_transaction, "", debit, balance_debit])
+      # expect(account.transaction_history).to include(transaction_dbl)
     end
 
     it 'shows the correct account balance after withdrawing money from the account' do

@@ -1,23 +1,20 @@
 class Transaction
 
-
-
-
+  def initialize
+    @transaction_record = {}
+  end
 
   def credit(credit_amount, balance)
-    { date: date, credit: money_format(credit_amount), debit: "", current_balance: balance }
-    # [date, money_format(credit_amount), "", balance]
+    @transaction_record = { date: date, credit: money_format(credit_amount), debit: "", current_balance: balance }
   end
 
   def debit(debit_amount, balance)
-    { date: date, credit: "", debit: money_format(debit_amount), current_balance: balance }
-    # [date, "", money_format(debit_amount), balance]
+    @transaction_record = { date: date, credit: "", debit: money_format(debit_amount), current_balance: balance }
   end
 
-
-
-
-
+  def record
+    @transaction_record
+  end
 
   private
 
