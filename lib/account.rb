@@ -30,7 +30,7 @@ class Account
   end
 
   def account_statement(statement = BankStatementPrinter.new)
-    statement.print_statement(transaction_history)
+    statement.print_statement(@transaction_records) #call directly here! - no need for #transaction_history anymore
   end
 
   private
@@ -39,9 +39,9 @@ class Account
     @transaction_records << transaction
   end
 
-  def transaction_history
-    @transaction_records
-  end
+  # def transaction_history - this isn't needed anymore
+  #   @transaction_records
+  # end
 
   def balance
     '£%.2f' % @balance
