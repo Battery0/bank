@@ -6,8 +6,8 @@ describe Account do
   let(:date) { Time.now.strftime("%d/%m/%Y") }
   let(:bank_statement_printer_instance_dbl) { double(:bank_statement_printer_instance) }
   let(:transaction_instance_dbl) { double(:transaction_instance_dbl) }
-  let(:credit_record_dbl) { double(:credit_record_dbl, { date: date, credit: "£500.00", debit: "", balance: "£500.00" }) }
-  let(:debit_record_dbl) { double(:debit_record_dbl, { date: date, credit: "", debit: "£65.00", balance: "£435.00" }) }
+  let(:credit_transaction_dbl) { double(:credit_transaction_dbl, { date: date, credit: "£500.00", debit: "", balance: "£500.00" }) }
+  let(:debit_transaction_dbl) { double(:debit_transaction_dbl, { date: date, credit: "", debit: "£65.00", balance: "£435.00" }) }
 
   describe '#credit' do
     it 'raises error if credit is not a Float or Integer' do
@@ -15,7 +15,7 @@ describe Account do
     end
 
     it 'updates the account history with a credit transaction' do
-      expect(transaction_instance_dbl).to receive(:credit).with(500, "£500.00").and_return(credit_record_dbl)
+      expect(transaction_instance_dbl).to receive(:credit).with(500, "£500.00").and_return(credit_transaction_dbl)
       account.credit(500, transaction_instance_dbl)
     end
 
@@ -31,9 +31,9 @@ describe Account do
     end
 
     it 'updates the account history with a debit transaction' do
-      allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00").and_return(credit_record_dbl)
+      allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00").and_return(credit_transaction_dbl)
       account.credit(500, transaction_instance_dbl)
-      expect(transaction_instance_dbl).to receive(:debit).with(65, "£435.00").and_return(debit_record_dbl)
+      expect(transaction_instance_dbl).to receive(:debit).with(65, "£435.00").and_return(debit_transaction_dbl)
       account.debit(65, transaction_instance_dbl)
     end
 
