@@ -26,6 +26,11 @@ describe Account do
   end
 
   describe '#debit' do
+
+    it 'raises error if debit is not a Float or Integer' do
+      expect { account.credit("1000", transaction_instance_dbl) }.to raise_error("You are not entering a correct monetary amount.")
+    end
+
     it 'raises error if trying to debit more money than currently available in the balance' do
       expect { account.debit(1, transaction_instance_dbl) }.to raise_error("Your account does not currently have that much money.")
     end

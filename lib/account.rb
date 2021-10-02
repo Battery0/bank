@@ -11,8 +11,7 @@ class Account
   end
 
   def credit(amount, transaction = Transaction.new)
-    raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
-    (amount.class != Float)
+    user_input_guard_clause(amount)
 
     @balance += amount
     transaction.credit(amount, balance)
@@ -21,6 +20,7 @@ class Account
   end
 
   def debit(amount, transaction = Transaction.new)
+    user_input_guard_clause(amount)
     raise "Your account does not currently have that much money." if @balance < amount
 
     @balance -= amount
@@ -34,6 +34,11 @@ class Account
   end
 
   private
+
+  def user_input_guard_clause(amount)
+    raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
+    (amount.class != Float)
+  end
 
   def store_record(transaction)
     @transaction_records << transaction
