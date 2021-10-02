@@ -21,20 +21,21 @@ describe Account do
   let(:transaction_instance_dbl) { double(:transaction_instance_dbl) }
 
 
-  # describe '#credit' do
-  #   it 'raises error if credit is not a Float or Integer' do
-  #     expect { account.credit("1000") }.to raise_error("You are not entering a correct monetary amount.")
-  #   end
+  describe '#credit' do
+    it 'raises error if credit is not a Float or Integer' do
+      expect { account.credit("1000", transaction_instance_dbl) }.to raise_error("You are not entering a correct monetary amount.")
+    end
 
-  #   it 'updates the account history with a credit transaction' do
-  #     expect(credit_transaction_dbl).to receive(:credit).with(500, "£500.00")
-  #     account.credit(500, credit_transaction_dbl)
-  #   end
+    it 'updates the account history with a credit transaction' do
+      allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00")
+      account.credit(500, transaction_instance_dbl)
+    end
 
-  #   it 'shows the correct account balance after depositing money into the account' do
-  #     expect(account.credit(500)).to eq(balance_credit)
-  #   end
-  # end
+    it 'shows the correct account balance after depositing money into the account' do
+      allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00")
+      expect(account.credit(500)).to eq("£500.00")
+    end
+  end
 
   # describe '#debit' do
   #   it 'raises error if trying to debit more money than currently available in the balance' do
