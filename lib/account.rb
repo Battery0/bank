@@ -37,7 +37,7 @@ class Account
 
   def user_input_guard_clause(amount)
     raise "You are not entering a correct monetary amount." if (amount.class != Integer) &&
-    (amount.class != Float) || !(amount.positive?)
+    (amount.class != Float) || !amount.positive?
   end
 
   def store_record(transaction)
