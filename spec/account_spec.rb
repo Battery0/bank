@@ -19,7 +19,7 @@ describe Account do
       account.credit(500, transaction_instance_dbl)
     end
 
-    it 'shows the correct account balance after depositing money into the account' do
+    it 'updates the balance after depositing money into the account' do
       allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00")
       expect(account.credit(500, transaction_instance_dbl)).to eq("£500.00")
     end
@@ -42,7 +42,7 @@ describe Account do
       account.debit(65, transaction_instance_dbl)
     end
 
-    it 'shows the correct account balance after withdrawing money from the account' do
+    it 'updates the account balance after withdrawing money from the account' do
       allow(transaction_instance_dbl).to receive(:credit).with(500, "£500.00")
       account.credit(500, transaction_instance_dbl)
       allow(transaction_instance_dbl).to receive(:debit).with(65, "£435.00")
