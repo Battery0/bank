@@ -3,22 +3,6 @@
 Bank app that allows you to add deposits & withdrawals to your account that is tracked.Allows you to<br>
 print your stored transactional history.
 
-## Note to Coaches - Submission 2
-
-* Extracted transaction methods from Account class to Transaction methods - wrote additional tests.
-* Altered the majority of tests to include doubles/stubs where appropriate.
-* Inlcuded feature test.
-* BankPrintStatement now prints the account transactions in the correct order.
-* Removed testing behaviour to only test state.
-* PrintBankStatement class name changed to BankStatementPrinter.
-* Only credit/debit an account with a positive integer / float.
-
-## Note to Coaches - Submission 1
-
-* I was in two minds as to whether the transaction should be its own class or not,ended up going<br>
-with not, but happy to receive feedback if this isn't the case so I can make improvements.
-
-
 ## Planning
 
 My approach started with thinking about the problem and jotting down the types of potential classes<br>
@@ -31,7 +15,7 @@ model as pictured below.
 
 First draft of the domain model, this has evolved during coding:
 
-[Domain Model - First Draft](https://github.com/Battery0/bank/blob/main/public/domain_model_first_draft.png)
+![Domain Model - First Draft](https://github.com/Battery0/bank/blob/main/public/domain_model_first_draft.png)
 
 ## Code Structure
 
@@ -61,7 +45,7 @@ Run any of the following methods to interact with the account:
 * account.account_statement (This prints your accounts transactional history)
 
 Picture of program running:
-[Program running in terminal](https://github.com/Battery0/bank/blob/main/public/program_running_in_terminal.png)
+![Program running in terminal](https://github.com/Battery0/bank/blob/main/public/program_running_in_terminal.png)
 
 ## Running Tests
 
